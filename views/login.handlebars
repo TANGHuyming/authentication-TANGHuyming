@@ -1,0 +1,19 @@
+<main>
+    {{#if flash.error}}
+        <p>
+            {{flash.error}}
+        </p>
+    {{else}}
+        <p>
+            {{flash.success}}
+        </p>
+    {{/if}}
+
+    <h1>Login</h1>
+
+    <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+</main>
