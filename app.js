@@ -3,14 +3,16 @@ const { engine } = require('express-handlebars')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const path = require('path')
-require('dotenv').config()
+// require('dotenv').config()
 
 const app = express()
 const PORT = 3000
+const SECRET = process.env.SECRET || 'skibidibopbopbopyesyesyes'
 
 // initialize handlebars engine
 app.engine('handlebars', engine({
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    partialsDir: path.join(__dirname, 'views', 'partials'),
 }))
 
 app.set('view engine', 'handlebars')
@@ -19,12 +21,12 @@ app.set('views', path.join(__dirname, 'views'))
 // middlewares
 app.disable('x-powered-by')
 
-app.use(cookieParser(process.env.SECRET))
+app.use(cookieParser(SECRET))
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret: process.env.SECRET, // In production, use environment variable
+    secret: SECRET, // In production, use environment variable
     resave: false,
     saveUninitialized: false,
     cookie: {

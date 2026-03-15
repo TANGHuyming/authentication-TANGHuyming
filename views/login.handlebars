@@ -1,17 +1,41 @@
 <main>
+    <h1>Login</h1>
+
+    <p>
+        Use your account credentials to sign in and access protected pages in
+        this authentication project.
+    </p>
+
+    <h2>Before you log in</h2>
+    <ul>
+        <li>Enter your username exactly as registered.</li>
+        <li>Passwords are case-sensitive.</li>
+        <li>If login fails, check your spelling and try again.</li>
+    </ul>
+
+    <p>
+        After a successful login, your session will be created and you will be
+        able to view private content until you log out.
+    </p>
+
+    <p>
+        Try this dummy user:
+        <ul>
+            <li><strong>Username:</strong> student_dev</li>
+            <li><strong>Password:</strong> dev_password</li>
+        </ul>
+    </p>
+
     {{#if flash.error}}
-        <p>
+        <p style="color: red">
             {{flash.error}}
         </p>
     {{else}}
-        <p>
+        <p style="color: green">
             {{flash.success}}
         </p>
     {{/if}}
-
-    <h1>Login</h1>
-
-    <form action="/login" method="POST">
+    <form action="/login" method="POST" class="form-container">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
         <button type="submit">Login</button>
